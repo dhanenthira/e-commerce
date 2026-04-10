@@ -20,7 +20,7 @@ const firebaseDb = firebase.firestore();
 const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 const API_BASE_URL = isLocal 
   ? 'http://localhost:3000/api' 
-  : '/api'; // In production, same domain
+  : 'https://e-commerce-66ls.onrender.com/api'; 
 
 // Export for use in other modules
 window.ShopVerse = {
