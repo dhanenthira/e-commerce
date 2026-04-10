@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ShopVerse — Discover premium products across electronics, fashion, and books. Shop with confidence.">
+  <title>ShopVerse — Premium E-Commerce Store</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛍️</text></svg>">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-content">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-icon">🛍️</div>
+        <span>ShopVerse</span>
+      </a>
+
+      <div class="nav-links" id="nav-links">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="products.html" class="nav-link">Products</a>
+        <a href="cart.html" class="nav-link">Cart</a>
+        <a href="admin.html" class="nav-link">Admin</a>
+      </div>
+
+      <div class="nav-actions">
+        <a href="cart.html" class="nav-icon-btn" title="Cart" id="nav-cart-btn">
+          🛒
+          <span class="badge cart-badge-count" style="display:none;">0</span>
+        </a>
+        <a href="profile.html" class="nav-icon-btn" title="Profile" id="nav-profile-btn" style="display:none;">
+          👤
+        </a>
+        <a href="login.html" class="nav-icon-btn" title="Login" id="nav-login-btn">
+          🔑
+        </a>
+        <button class="nav-icon-btn" id="nav-logout-btn" style="display:none;" onclick="handleLogout()" title="Logout">
+          🚪
+        </button>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>
+            Discover the<br>
+            <span class="gradient-text">Future of Shopping</span>
+          </h1>
+          <p>
+            Explore a curated collection of premium products across electronics, fashion, and literature. Experience seamless shopping with fast delivery and secure payments.
+          </p>
+          <div class="hero-actions">
+            <a href="products.html" class="btn btn-primary btn-lg">
+              🛍️ Shop Now
+            </a>
+            <a href="#categories" class="btn btn-outline btn-lg">
+              Explore Categories
+            </a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600" alt="ShopVerse Premium Shopping" onerror="this.style.display='none'">
+          </div>
+          <div class="hero-float-card card-1">
+            <div class="card-value">50%</div>
+            <div class="card-label">Mega Deals</div>
+          </div>
+          <div class="hero-float-card card-2">
+            <div class="card-value">10K+</div>
+            <div class="card-label">Happy Customers</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Search Section -->
+  <section class="search-section">
+    <div class="container">
+      <div class="search-wrapper">
+        <span class="search-icon">🔍</span>
+        <input type="text" class="search-bar" id="home-search" placeholder="Search for products, categories, brands..." aria-label="Search products">
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories Section -->
+  <section class="categories-section section" id="categories">
+    <div class="container">
+      <div class="section-header">
+        <h2>Shop by Category</h2>
+        <p>Find exactly what you're looking for</p>
+        <div class="accent-line"></div>
+      </div>
+
+      <div class="categories-grid">
+        <a href="products.html?category=electronics" class="category-card" id="category-electronics">
+          <span class="category-icon">⚡</span>
+          <h3>Electronics</h3>
+          <p>Headphones, watches, gadgets & more</p>
+        </a>
+        <a href="products.html?category=fashion" class="category-card" id="category-fashion">
+          <span class="category-icon">👗</span>
+          <h3>Fashion</h3>
+          <p>Clothing, bags, shoes & accessories</p>
+        </a>
+        <a href="products.html?category=books" class="category-card" id="category-books">
+          <span class="category-icon">📚</span>
+          <h3>Books</h3>
+          <p>Bestsellers, tech, leadership & more</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Products Section -->
+  <section class="section" id="featured">
+    <div class="container">
+      <div class="section-header">
+        <h2>Trending Products</h2>
+        <p>Our most popular picks this season</p>
+        <div class="accent-line"></div>
+      </div>
+
+      <div class="products-grid" id="featured-products">
+        <!-- Loaded via JS -->
+      </div>
+
+      <div style="text-align:center;margin-top:var(--space-2xl);">
+        <a href="products.html" class="btn btn-outline btn-lg">View All Products →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Banner -->
+  <section class="section">
+    <div class="container">
+      <div class="categories-grid" style="grid-template-columns:repeat(4, 1fr);">
+        <div class="category-card" style="padding:var(--space-xl);">
+          <span class="category-icon" style="font-size:2rem;">🚚</span>
+          <h3 style="font-size:1rem;">Free Shipping</h3>
+          <p>On orders above ₹1,000</p>
+        </div>
+        <div class="category-card" style="padding:var(--space-xl);">
+          <span class="category-icon" style="font-size:2rem;">🔒</span>
+          <h3 style="font-size:1rem;">Secure Payment</h3>
+          <p>100% secure transactions</p>
+        </div>
+        <div class="category-card" style="padding:var(--space-xl);">
+          <span class="category-icon" style="font-size:2rem;">↩️</span>
+          <h3 style="font-size:1rem;">Easy Returns</h3>
+          <p>30-day return policy</p>
+        </div>
+        <div class="category-card" style="padding:var(--space-xl);">
+          <span class="category-icon" style="font-size:2rem;">🎧</span>
+          <h3 style="font-size:1rem;">24/7 Support</h3>
+          <p>Customer support always</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>🛍️ ShopVerse</h3>
+          <p>Your one-stop destination for premium products. Quality, speed, and trust — that's what ShopVerse delivers.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <a href="index.html">Home</a>
+          <a href="products.html">All Products</a>
+          <a href="cart.html">Cart</a>
+          <a href="profile.html">My Account</a>
+        </div>
+        <div class="footer-col">
+          <h4>Categories</h4>
+          <a href="products.html?category=electronics">Electronics</a>
+          <a href="products.html?category=fashion">Fashion</a>
+          <a href="products.html?category=books">Books</a>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <a href="#">Help Center</a>
+          <a href="#">Shipping Info</a>
+          <a href="#">Returns</a>
+          <a href="#">Contact Us</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 ShopVerse. All rights reserved.</span>
+        <span>Built with ❤️ for the web</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+  <!-- App Scripts -->
+  <script src="js/firebase-config.js"></script>
+  <script src="js/app.js"></script>
+
+  <!-- Homepage featured products loader -->
+  <script>
+    (function() {
+      const grid = document.getElementById('featured-products');
+      if (!grid) return;
+
+      // Featured products (top 4)
+      const featured = [
+        { id: 'demo-1', name: 'Wireless Noise-Cancelling Headphones', price: 4999, originalPrice: 7999, category: 'electronics', image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400', rating: 4.5, reviews: 234 },
+        { id: 'demo-10', name: 'Running Shoes - UltraBoost', price: 3999, originalPrice: 6999, category: 'fashion', image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400', rating: 4.6, reviews: 892 },
+        { id: 'demo-7', name: 'The Art of Clean Code', price: 599, originalPrice: 999, category: 'books', image: 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400', rating: 4.8, reviews: 523 },
+        { id: 'demo-5', name: 'Classic Leather Messenger Bag', price: 2999, originalPrice: 4999, category: 'fashion', image: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400', rating: 4.6, reviews: 98 },
+      ];
+
+      grid.innerHTML = featured.map(p => {
+        const discount = Math.round((1 - p.price / p.originalPrice) * 100);
+        return `
+          <div class="product-card">
+            <div class="product-image">
+              <img src="${p.image}" alt="${p.name}" loading="lazy">
+              <span class="product-badge sale">${discount}% OFF</span>
+            </div>
+            <div class="product-info">
+              <div class="product-category">${p.category}</div>
+              <h3 class="product-name">${p.name}</h3>
+              <div class="product-rating">
+                <span class="stars">${generateStars(p.rating)}</span>
+                <span class="count">(${p.reviews})</span>
+              </div>
+              <div class="product-price">
+                <span class="current">${formatPrice(p.price)}</span>
+                <span class="original">${formatPrice(p.originalPrice)}</span>
+                <span class="discount">${discount}% off</span>
+              </div>
+              <div class="product-actions">
+                <a href="product-detail.html?id=${p.id}" class="btn btn-outline btn-sm">View Details</a>
+                <a href="products.html" class="btn btn-primary btn-sm">Shop Now</a>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      // Home search redirect
+      const searchInput = document.getElementById('home-search');
+      if (searchInput) {
+        searchInput.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' && this.value.trim()) {
+            window.location.href = `products.html?search=${encodeURIComponent(this.value.trim())}`;
+          }
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

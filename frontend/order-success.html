@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Order confirmed — ShopVerse.">
+  <title>Order Success | ShopVerse</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛍️</text></svg>">
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="nav-content">
+      <a href="index.html" class="nav-logo"><div class="logo-icon">🛍️</div><span>ShopVerse</span></a>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="products.html" class="nav-link">Products</a>
+        <a href="cart.html" class="nav-link">Cart</a>
+      </div>
+      <div class="nav-actions">
+        <a href="profile.html" class="nav-icon-btn" title="Profile" id="nav-profile-btn" style="display:none;">👤</a>
+        <a href="login.html" class="nav-icon-btn" title="Login" id="nav-login-btn">🔑</a>
+        <button class="nav-icon-btn" id="nav-logout-btn" style="display:none;" onclick="handleLogout()" title="Logout">🚪</button>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="success-page page-content">
+    <div class="success-container">
+      <div class="success-icon">✓</div>
+      <h1>Order Confirmed!</h1>
+      <p>Your order has been placed successfully. Thank you for shopping with ShopVerse!</p>
+      <div id="order-details" style="margin:var(--space-xl) 0;padding:var(--space-lg);background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-md);text-align:left;">
+        <!-- Loaded via JS -->
+      </div>
+      <div style="display:flex;gap:var(--space-md);justify-content:center;flex-wrap:wrap;">
+        <a href="products.html" class="btn btn-primary btn-lg">Continue Shopping</a>
+        <a href="profile.html" class="btn btn-outline btn-lg">View Orders</a>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    (function() {
+      const details = document.getElementById('order-details');
+      const orderId = localStorage.getItem('shopverse_last_order');
+      if (details && orderId) {
+        details.innerHTML = `
+          <div class="summary-row">
+            <span style="color:var(--text-muted);">Payment ID</span>
+            <span style="font-weight:600;font-size:0.85rem;">${orderId}</span>
+          </div>
+          <div class="summary-row">
+            <span style="color:var(--text-muted);">Status</span>
+            <span class="order-status confirmed">Confirmed</span>
+          </div>
+          <div class="summary-row">
+            <span style="color:var(--text-muted);">Date</span>
+            <span>${new Date().toLocaleDateString('en-IN', { day:'numeric', month:'long', year:'numeric' })}</span>
+          </div>
+        `;
+        // Cleanup
+        localStorage.removeItem('shopverse_last_order');
+      } else if (details) {
+        details.innerHTML = '<p style="text-align:center;color:var(--text-muted);">Order details will appear after a successful purchase.</p>';
+      }
+
+      // Confetti animation
+      function createConfetti() {
+        const colors = ['#6C5CE7','#00CEC9','#FD79A8','#FDCB6E','#55EFC4','#A29BFE'];
+        for (let i = 0; i < 50; i++) {
+          const confetti = document.createElement('div');
+          confetti.style.cssText = `
+            position:fixed;
+            width:${Math.random()*10+5}px;
+            height:${Math.random()*10+5}px;
+            background:${colors[Math.floor(Math.random()*colors.length)]};
+            left:${Math.random()*100}vw;
+            top:-10px;
+            border-radius:${Math.random()>0.5?'50%':'2px'};
+            z-index:9999;
+            pointer-events:none;
+            animation:confetti-fall ${Math.random()*3+2}s ease-in forwards;
+            animation-delay:${Math.random()*2}s;
+            opacity:${Math.random()*0.7+0.3};
+          `;
+          document.body.appendChild(confetti);
+          setTimeout(() => confetti.remove(), 5000);
+        }
+      }
+
+      // Add confetti keyframes
+      const style = document.createElement('style');
+      style.textContent = `
+        @keyframes confetti-fall {
+          0% { transform: translateY(0) rotate(0deg); opacity:1; }
+          100% { transform: translateY(100vh) rotate(720deg); opacity:0; }
+        }
+      `;
+      document.head.appendChild(style);
+      createConfetti();
+    })();
+  </script>
+</body>
+</html>
