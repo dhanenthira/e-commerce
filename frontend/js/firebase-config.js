@@ -1,12 +1,12 @@
 // ShopVerse Firebase Configuration
 // Replace these with your actual Firebase project config
 const firebaseConfig = {
-  apiKey: "AIzaSyDCkKAIIiB3QR3kuSZY303_X6BLv7lsvAk",
-  authDomain: "shoping-597b3.firebaseapp.com",
-  projectId: "shoping-597b3",
-  storageBucket: "shoping-597b3.firebasestorage.app",
-  messagingSenderId: "973887079376",
-  appId: "1:973887079376:web:137adb9495991b8a98efd5"
+  apiKey: process.env.FIREBASE_API_KEY,
+  authDomain: FIREBASE_AUTH_DOMAIN,
+  projectId: FIREBASE_PROJECT_ID,
+  storageBucket:FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: FIREBASE_MESSAGING_SENDER_ID,
+  appId: FIREBASE_APP_ID
 };
 
 // Initialize Firebase
